@@ -1,0 +1,10 @@
+{
+    "name": "Spoiler Alert",
+    "version": "1.0",
+    "description": "Browse the web freely without having to worry about spoilers of your favourite TV shows and movies.",
+    "manifest_version": 2,
+    "background": {
+        "scripts": ["background.js"],
+        "persistant": "false"
+    }
+  }
