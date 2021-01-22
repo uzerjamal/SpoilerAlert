@@ -3,8 +3,19 @@
     "version": "1.0",
     "description": "Browse the web freely without having to worry about spoilers of your favourite TV shows and movies.",
     "manifest_version": 2,
+    "author": "Uzer Jamal",
+    "permissions": ["storage", "declarativeContent"],
     "background": {
         "scripts": ["background.js"],
         "persistant": "false"
+    },
+    "page_action": {
+        "default_popup": "Interface/popup.html"
+    },
+    "icons": {
+        "16": "Images/SpoilerAlert16.png",
+        "32": "Images/SpoilerAlert32.png",
+        "48": "Images/SpoilerAlert48.png",
+        "128": "Images/SpoilerAlert128.png"
     }
   }

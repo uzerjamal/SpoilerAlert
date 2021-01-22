@@ -1,3 +1,14 @@
 chrome.runtime.onInstalled.addListener(() => {
-    console.log('Hello world!');
+    chrome.storage.sync.set({hideSpoilers: true}, () => {
+        console.log('Spoiler Alert enabled!');
+    });
+});
+
+chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
+    chrome.declarativeContent.onPageChanged.addRules([{
+        conditions: [new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: {hostContains: '.'}
+        })],
+        actions: [new chrome.declarativeContent.ShowPageAction()]
+    }]);
 });
