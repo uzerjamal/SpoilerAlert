@@ -10,7 +10,7 @@ const checkKeywords = (str) => {
 
 for(let i=0; i<elements.length; i++){
     if(elements[i].nodeName === 'IMG'){
-        if(checkKeywords(elements[i].alt))
+        if(checkKeywords((elements[i].alt).toLowerCase()))
             elements[i].setAttribute('style', '-webkit-filter: blur(5px)');
     }
     else {
