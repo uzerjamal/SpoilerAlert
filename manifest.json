@@ -7,7 +7,8 @@
     "permissions": ["storage", "declarativeContent", "activeTab"],
     "content_scripts": [{
         "matches": ["<all_urls>"],
-        "js": ["Scripts/content.js", "Scripts/jquery.js"]
+        "js": ["Scripts/content.js", "Scripts/jquery.js"],
+        "run_at": "document_idle"
     }],
     "page_action": {
         "default_popup": "Interface/popup.html"
