@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="style.css" ref="stylesheet">
+        <link href="style.css" rel="stylesheet">
     </head>
 
     <body>
+        <form>
+            <input type="text" id="textInput" required>
+            <button type="button" id="submitButton">Submit</button>
+        </form>
+        <ul id='list'>
+            <li id='pending' style='display:none'>Searching...</li>
+        </ul>
         <script src="../Scripts/hideSpoiler.js"></script>
     </body>
 </html>

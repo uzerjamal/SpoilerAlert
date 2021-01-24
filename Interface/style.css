@@ -1,0 +1,21 @@
+body {
+  width: 240px;
+  height: 320px;
+  background-color: mediumpurple;
+}
+
+form {
+  width: 100%;
+  display: flex;
+}
+
+input {
+  padding: 16px;
+  width: 70%;
+  background-color: rgba(55, 65, 81, 1);
+  color: white;
+}
+
+#submitButton {
+  width: 30%;
+}
