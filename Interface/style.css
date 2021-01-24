@@ -1,6 +1,6 @@
 body {
-  width: 240px;
-  height: 320px;
+  min-width: 160px;
+  min-height: 320px;
   background-color: mediumpurple;
 }
 
@@ -18,4 +18,27 @@ input {
 
 #submitButton {
   width: 30%;
+}
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  background-color: white;
+  margin: 6px;
+  padding: 2px;
+  text-align: center;
+}
+
+img p {
+  display: block;
+  margin: auto;
 }
