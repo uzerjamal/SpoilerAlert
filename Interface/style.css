@@ -1,7 +1,8 @@
 body {
-  min-width: 160px;
+  min-width: 250px;
   min-height: 320px;
-  background-color: mediumpurple;
+  background-color: #111827;
+  color: white;
 }
 
 form {
@@ -10,14 +11,19 @@ form {
 }
 
 input {
-  padding: 16px;
+  padding: 8px;
   width: 70%;
   background-color: rgba(55, 65, 81, 1);
   color: white;
+  border-width: 0;
 }
 
 #submitButton {
   width: 30%;
+  padding: 8px;
+  color: #d1fae5;
+  background-color: #10b981;
+  border-width: 0;
 }
 
 .content-area {
@@ -32,10 +38,12 @@ input {
 }
 
 .card {
-  background-color: white;
+  background-color: #1f2937;
   margin: 6px;
   padding: 2px;
+  padding-top: 6px;
   text-align: center;
+  width: 120px;
 }
 
 img p {

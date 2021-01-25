@@ -1,6 +1,11 @@
 const apiKey = '96599eda9024c9c8ccf18ccdd4488bfe' //TMDB api key
 const resultList = document.getElementById('list');
 const pendingListItem = document.getElementById('pending');
+const cards = document.getElementsByClassName('card');
+
+function getTitle(){
+    console.log(this);
+}
 
 const displayResults = (resultsArray) => {
     for(let i=0; i<4; i++){
@@ -38,7 +43,16 @@ const getTitles = (title) => {
     pendingListItem.style.display = 'block'; //executes when promise is pending
 }
 
-document.getElementById('submitButton').onclick = () => {
+// const cardClickListener = () => {
+    
+// }
+
+// for(let i=0; i<cards.length; i++){
+//     cards[i].addEventListener('click', cardClickListener);
+// }
+
+document.getElementById('submitButton').onclick = (event) => {
+    event.preventDefault();
     let input = document.getElementById('textInput').value;
 
     if(input){
