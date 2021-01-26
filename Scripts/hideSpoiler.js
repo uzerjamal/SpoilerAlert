@@ -2,10 +2,7 @@ const apiKey = '96599eda9024c9c8ccf18ccdd4488bfe' //TMDB api key
 const resultList = document.getElementById('list');
 const pendingListItem = document.getElementById('pending');
 const cards = document.getElementsByClassName('card');
-
-function getTitle(){
-    console.log(this);
-}
+let titlesArray = [];
 
 const displayResults = (resultsArray) => {
     for(let i=0; i<4; i++){
@@ -16,7 +13,6 @@ const displayResults = (resultsArray) => {
 }
 
 const getTitles = (title) => {
-    let titlesArray = [];
     const queryUrl = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}`+
                         `&query=${title.replace(' ', '+')}&page=1`;
     fetch(queryUrl)
@@ -43,10 +39,41 @@ const getTitles = (title) => {
     pendingListItem.style.display = 'block'; //executes when promise is pending
 }
 
+const getKeywords = (title) => {
+    let keywords = [title];
+    let count = 0; // Limits the number of characters
+    for(let i=0; i<4; i++){
+        if(titlesArray[i].title === title){
+            let queryUrl = `https://api.themoviedb.org/3/${titlesArray[i].mediaType}/${titlesArray[i].id}/credits?api_key=${apiKey}&language=en-US`;
+            fetch(queryUrl)
+                .then(response => response.json())
+                .then(data => {
+                    for(let i=0; i<data.cast.length; i++){
+                        if(count>=10) break;
+                        if(data.cast[i].known_for_department === 'Acting'){
+                            count++;
+                            let characterName = data.cast[i].character;
+                            if(characterName.includes('/')){
+                                let splitNames = characterName.split('/');
+                                for(let j=0; j<splitNames.length; j++){
+                                    keywords.push(splitNames[j].trim());
+                                }
+                            }
+                            else{
+                                keywords.push(characterName);
+                            }
+                        }
+                    }
+                    console.log(keywords);
+                });
+        }
+    }
+}
+
 for(let i=0; i<cards.length; i++){
     cards[i].addEventListener('click', (event) => {
-        let x = cards[i].getElementsByTagName('p')[0].innerHTML;
-        console.log(x);
+        let selectedTitle = cards[i].getElementsByTagName('p')[0].innerHTML;
+        getKeywords(selectedTitle);
     });
 }
 
