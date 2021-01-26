@@ -43,13 +43,12 @@ const getTitles = (title) => {
     pendingListItem.style.display = 'block'; //executes when promise is pending
 }
 
-// const cardClickListener = () => {
-    
-// }
-
-// for(let i=0; i<cards.length; i++){
-//     cards[i].addEventListener('click', cardClickListener);
-// }
+for(let i=0; i<cards.length; i++){
+    cards[i].addEventListener('click', (event) => {
+        let x = cards[i].getElementsByTagName('p')[0].innerHTML;
+        console.log(x);
+    });
+}
 
 document.getElementById('submitButton').onclick = (event) => {
     event.preventDefault();
