@@ -64,7 +64,15 @@ const getKeywords = (title) => {
                             }
                         }
                     }
-                    console.log(keywords);
+                    
+                    chrome.storage.sync.get('keywordList', (result) =>{
+                        //console.log(result);
+                        let newData = result.keywordList;
+                        newData.push(keywords);
+                        chrome.storage.sync.set({'keywordList': newData}, ()=>{
+                            
+                        });
+                    });
                 });
         }
     }

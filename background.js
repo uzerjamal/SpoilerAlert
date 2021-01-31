@@ -1,5 +1,5 @@
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.set({hideSpoilers: true}, () => {
+    chrome.storage.sync.set({keywordList: []}, () => {
         console.log('Spoiler Alert enabled!');
     });
 });

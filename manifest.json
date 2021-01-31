@@ -1,10 +1,10 @@
 {
     "name": "Spoiler Alert",
-    "version": "1.0",
+    "version": "0.0.1",
     "description": "Browse the web freely without having to worry about spoilers of your favourite TV shows and movies.",
     "manifest_version": 2,
     "author": "Uzer Jamal",
-    "permissions": ["storage", "declarativeContent", "activeTab", "*://*.imdb.com/*"],
+    "permissions": ["storage", "declarativeContent", "activeTab"],
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "js": ["Scripts/content.js", "Scripts/jquery.js"],
