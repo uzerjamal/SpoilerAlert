@@ -85,7 +85,6 @@ const getKeywords = (title) => {
                     }
                     
                     chrome.storage.sync.get('keywordList', (result) =>{
-                        //console.log(result);
                         let newData = result.keywordList;
                         newData.push(keywords);
                         chrome.storage.sync.set({'keywordList': newData}, ()=>{
@@ -102,6 +101,22 @@ for(let i=0; i<cards.length; i++){
         let selectedTitle = cards[i].getElementsByTagName('p')[0].innerHTML;
         getKeywords(selectedTitle);
     });
+}
+
+document.getElementById('selectedList').onclick = (event) =>{   
+    if(event.target.tagName === "LI"){
+        console.log(event.target.innerText);
+        chrome.storage.sync.get('keywordList', (result) =>{
+           for(let i=0; i<result.keywordList.length; i++){
+               if(event.target.innerText === result.keywordList[i][0]){
+                   result.keywordList.splice(i, 1);
+                   chrome.storage.sync.set({'keywordList': result.keywordList}, ()=>{
+                    updateList();
+                });
+               }
+           } 
+        });
+    }
 }
 
 document.getElementById('submitButton').onclick = (event) => {
