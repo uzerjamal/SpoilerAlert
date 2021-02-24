@@ -50,3 +50,19 @@ img p {
   display: block;
   margin: auto;
 }
+
+ul {
+  padding: 5px;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+}
+
+li:hover {
+  background-color: rgb(116, 0, 0);
+  transition: 0.25s;
+}
