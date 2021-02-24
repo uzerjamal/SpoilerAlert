@@ -4,6 +4,23 @@ const pendingListItem = document.getElementById('pending');
 const cards = document.getElementsByClassName('card');
 let titlesArray = [];
 
+const updateList = () => {
+    chrome.storage.sync.get('keywordList', (result) =>{
+        document.getElementById('content-area-id').style.display = 'none'; 
+        let ul = document.getElementById('selectedList');
+        ul.innerHTML = ""; //Clears previous li item to prevent repetetion 
+        for(let i=0; i<result.keywordList.length; i++){
+            let li = document.createElement('li');
+            li.appendChild(document.createTextNode(result.keywordList[i][0]));
+            ul.appendChild(li);
+        }
+        document.getElementById('selectedList').style.display = 'block';
+        document.getElementById('hidingSpoilerTitle').style.display = 'block';
+    });
+}
+
+updateList();
+
 const displayResults = (resultsArray) => {
     for(let i=0; i<4; i++){
         document.getElementById(`img${i+1}`).src = resultsArray[i].posterPath;
@@ -36,6 +53,8 @@ const getTitles = (title) => {
             //console.log(titlesArray);
             displayResults(titlesArray);
         });
+    document.getElementById('selectedList').style.display = 'none';
+    document.getElementById('hidingSpoilerTitle').style.display = 'none';       
     pendingListItem.style.display = 'block'; //executes when promise is pending
 }
 
@@ -70,7 +89,7 @@ const getKeywords = (title) => {
                         let newData = result.keywordList;
                         newData.push(keywords);
                         chrome.storage.sync.set({'keywordList': newData}, ()=>{
-                            
+                            updateList();
                         });
                     });
                 });
